@@ -1,11 +1,6 @@
-# College-intern-project
-By -> Rahul Mishra , Technitium Backend
-## Open to Intern Project Requirement
+# Technetium
 
-### Key points
-- Create a group database `groupXDatabase`. You can clean the db you previously used and resue that.
-- This time each group should have a *single git branch*. Coordinate amongst yourselves by ensuring every next person pulls the code last pushed by a team mate. You branch will be checked as part of the demo. Branch name should follow the naming convention `project/internshipGroupX`
-- Follow the naming conventions exactly as instructed. The backend code will be integrated with the front-end application which means any mismatch in the expected request body will lead to failure in successful integration.
+## Open to Intern Project Requirement
 
 ### Models
 - College Model
@@ -26,7 +21,7 @@ By -> Rahul Mishra , Technitium Backend
 ### POST /functionup/interns
 - Create a document for an intern. 
 - Also save the collegeId along with the document. Your request body contains the following fields - { name, mobile, email, collegeName}
-- Return HTTP status 201 on a succesful document creation. Also return the document. The response should be a JSON object like [this](#successful-response-structure) 
+- Return HTTP status 201 on a succesful document creation. Also return the document. The response should be a JSON object like [this](#Intern) 
 
 - Return HTTP status 400 for an invalid request with a response body like [this](#error-response-structure)
 
@@ -71,20 +66,26 @@ Refer below sample
 #### College
 ```yaml
 {
-    "name" : "iith",
-    "fullName" : "Indian Institute of Technology, Hyderabad",
-    "logoLink" : "https://functionup.s3.ap-south-1.amazonaws.com/colleges/iith.png",
-    "isDeleted" : false
+  status: true,
+  data: {
+        "name" : "iith",
+        "fullName" : "Indian Institute of Technology, Hyderabad",
+        "logoLink" : "https://functionup.s3.ap-south-1.amazonaws.com/colleges/iith.png",
+        "isDeleted" : false
+         }
 }
 ```
 #### Intern
 ```yaml
-   {
-    "isDeleted" : false,
-    "name" : "Jane Does",
-    "email" : "jane.doe@iith.in",
-    "mobile" : "90000900000",
-    "collegeId" : ObjectId("888771129c9ea621dc7f5e3b")
+{
+  status: true,
+  data: {
+        "isDeleted" : false,
+        "name" : "Jane Does",
+        "email" : "jane.doe@iith.in",
+        "mobile" : "90000900000",
+        "collegeId" : ObjectId("888771129c9ea621dc7f5e3b")
+        }
 }
 ```
 ## Response samples
@@ -92,11 +93,12 @@ Refer below sample
 ### College details
 ```yaml
 {
+  status: true,
   "data": {
     "name": "xyz",
     "fullName": "Some Institute of Engineering and Technology",
     "logoLink": "some public s3 link for a college logo",
-    "interests": [
+    "interns": [
       {
         "_id": "123a47301a53ecaeea02be59",
         "name": "Jane Doe",
