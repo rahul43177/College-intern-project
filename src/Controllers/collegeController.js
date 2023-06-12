@@ -8,7 +8,7 @@ const createCollege = async (req,res) => {
         if(Object.keys(college).length === 0) return res.status(400).send({status : false , message : "Data is required for adding College"})
         if(!name || !name.trim()) return res.status(400).send({status : false , message : "Name is required"})
         if(!fullName || !fullName.trim()) return res.status(400).send({status : false , message  : "Full name is required"})
-        if(!logoLink || logoLink.trim()) return res.status(400).send({status : false , message : "Logo link is required"})
+        if(!logoLink) return res.status(400).send({status : false , message : "Logo link is required"})
         if(!url_valid(logoLink)) return res.status(400).send({status : true , message  : "Please enter a valid logo link"})
 
         const collegeExist = await collegeModel.findOne({name : name})

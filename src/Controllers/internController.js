@@ -4,7 +4,7 @@ const validator = require('validator')
 
 const createIntern = async (req,res) =>{
     try {
-        let intern = req.body.intern
+        let intern = req.body
         let {name , email , mobile, collegeName } = intern
         if(Object.keys(intern)==0) return res.status(400).send({status : false , message : "Intern details are required"})
         if(!name || !name.trim()) return res.status(400).send({status : false , message : "Name is required"})
@@ -51,7 +51,7 @@ const createIntern = async (req,res) =>{
 
 
 
-const getIntern = async function(res,res) {
+const getIntern = async function(req,res) {
     try {
         const collegeName = req.query.collegeName
         if(!collegeName || collegeName.trim()== '') return res.status(400).send({status : false , message : "Collge Name is required"})
